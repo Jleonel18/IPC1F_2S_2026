@@ -1,6 +1,7 @@
 
 package com.mycompany.ejemplo_proyecto1;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Ejemplo_Proyecto1 {
@@ -65,6 +66,14 @@ public class Ejemplo_Proyecto1 {
             }
         }
         
+        int[][] posiciones = crearEntradaYSalida();
+        int [] entrada = posiciones[0];
+        int [] salida = posiciones[1];
+        
+        tablero[entrada[0]][entrada[1]] = 'E';
+        tablero[salida[0]][salida[1]] = 'S';
+        
+         
         return tablero;
         
     }
@@ -102,6 +111,48 @@ public class Ejemplo_Proyecto1 {
         }
         
         
+    }
+    
+    public static int[] generarPosicionBorde(){
+        int borde = (int) (Math.random()*4);
+        
+        int fila;
+        int columna;
+        
+        switch(borde){
+            case 0: //Arriba
+                fila = 0;
+                columna = (int) (Math.random()*5);
+                break;
+                
+            case 1: // Abajo
+                fila = 4;
+                columna = (int) (Math.random()*5);
+                break;
+            case 2: //Izquierda
+                fila = (int) (Math.random()*5);
+                columna = 0;
+                break;
+            default: // Derecha
+                fila = (int) (Math.random()*5);
+                columna = 4;
+                break;
+                        
+        }
+        
+        return new int[]{fila,columna};
+    }
+    
+    public static int[][] crearEntradaYSalida(){
+        int[] entrada = generarPosicionBorde();
+        int[] salida = generarPosicionBorde();
+        
+        //Si son iguales, generar otra posición
+        while(entrada[0]==salida[0] && entrada[1]==salida[1]){
+            salida = generarPosicionBorde();
+        }
+        
+        return new int[][]{entrada,salida};
     }
     
     
