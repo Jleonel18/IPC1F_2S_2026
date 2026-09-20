@@ -1,2 +1,5 @@
 /Ejemplo_Proyecto1/target/
 /Ejemplo1Proyecto1/target/
+/com.mycompany_Ejemplo2Proyecto1_jar_1.0-SNAPSHOT/target/
+//Archivos .class
+*.class
